@@ -19,4 +19,3 @@ class Queue:
         if 0 <= index < len(self):
             return self._queue[index]
         raise IndexError('error')
-        
