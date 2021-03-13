@@ -14,7 +14,7 @@ class Queue:
     def dequeue(self):
         if self._queue:
             return self._queue.pop(self.FIRST_ELEMENT)
-        return None
+        return False
 
     def search(self, index):
         if 0 <= index < len(self):
