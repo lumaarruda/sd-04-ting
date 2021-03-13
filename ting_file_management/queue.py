@@ -1,15 +1,22 @@
 class Queue:
+    FIRST_ELEMENT = 0
+
     def __init__(self):
-        self._data = list()
+        self._queue = list()
 
     def __len__(self):
-        return len(self._data)
+        return len(self._queue)
 
     def enqueue(self, value):
-        """Aqui irá sua implementação"""
+        self._queue.append(value)
 
     def dequeue(self):
-        """Aqui irá sua implementação"""
+        if self._queue:
+            return self._queue.pop(self.FIRST_ELEMENT)
+        return None
 
     def search(self, index):
-        """Aqui irá sua implementação"""
+        if 0 <= index < len(self):
+            return self._queue[index]
+        raise IndexError('error')
+        
