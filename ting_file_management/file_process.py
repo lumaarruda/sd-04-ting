@@ -20,13 +20,13 @@ def remove(instance):
     dequeueR = instance.dequeue()
     if dequeueR is not False:
         print(f"Arquivo {dequeueR['nome_do_arquivo']} removido com sucesso",
-            file=sys.stdout,)
+              file=sys.stdout,)
     else:
         print("Não há elementos", file=sys.stdout)
 
 
 def file_metadata(instance, position):
     try:
-        searchReturn = instance.search(position)
+        instance.search(position)
     except IndexError:
         print("Posição inválida", file=sys.stderr)

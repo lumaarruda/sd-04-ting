@@ -1,6 +1,11 @@
+# from ting_file_management.file_management import txt_importer
+
+
 def exists_word(word, instance):
-    """Aqui irá sua implementação"""
+    for item in (instance):
+        print(item)
+    return []
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    return []
