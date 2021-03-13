@@ -17,10 +17,10 @@ def process(path_file, instance):
 
 
 def remove(instance):
-    dequeueReturn = instance.dequeue()
-    if dequeueReturn is not False:
-        print(f"Arquivo {dequeueReturn['nome_do_arquivo']} removido com sucesso",
-            file=sys.stdout,)
+    dequeueRet = instance.dequeue()
+    if dequeueRet is not False:
+        print(f"Arquivo{dequeueRet['nome_do_arquivo']} removido com sucesso",
+              file=sys.stdout,)
     else:
         print("Não há elementos", file=sys.stdout)
 
