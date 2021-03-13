@@ -7,6 +7,9 @@ class Queue:
         """Aqui irá sua implementação"""
         return len(self._list)
 
+    def __iter__(self):
+        return iter(self._list)
+
     def enqueue(self, value):
         """Aqui irá sua implementação"""
         if value in self._list:

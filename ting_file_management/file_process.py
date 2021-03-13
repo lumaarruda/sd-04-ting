@@ -5,14 +5,13 @@ import sys
 def process(path_file, instance):
     """Aqui irá sua implementação"""
     doc = txt_importer(path_file)
-    if not instance.enqueue(path_file):
-        return
-    print(
-        f"""'nome_do_arquivo': '{path_file}',
-        'qtd_linhas': {len(doc)},
-        'linhas_do_arquivo': {doc}""",
-        file=sys.stdout,
-    )
+    file_info = {
+        "nome_do_arquivo": path_file,
+        "qtd_linhas": len(doc),
+        "linhas_do_arquivo": doc,
+    }
+    if instance.enqueue(file_info):
+        print_out(file_info)
 
 
 def remove(instance):
@@ -24,16 +23,19 @@ def remove(instance):
         print("Não há elementos", file=sys.stdout)
 
 
+def print_out(file_info):
+    print(
+        f"""'nome_do_arquivo': '{file_info["nome_do_arquivo"]}',
+        'qtd_linhas': {len(file_info["linhas_do_arquivo"])},
+        'linhas_do_arquivo': {file_info["linhas_do_arquivo"]}""",
+        file=sys.stdout,
+    )
+
+
 def file_metadata(instance, position):
     """Aqui irá sua implementação"""
     try:
-        path_file = instance.search(position)
-        text = txt_importer(path_file)
-        print(
-            f"""'nome_do_arquivo': '{path_file}',
-        'qtd_linhas': {len(text)},
-        'linhas_do_arquivo': {text}""",
-            file=sys.stdout,
-        )
+        file_info = instance.search(position)
+        print_out(file_info)
     except IndexError:
         print("Posição inválida", file=sys.stderr)
