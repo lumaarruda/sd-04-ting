@@ -9,10 +9,15 @@ class Queue:
 
     def enqueue(self, value):
         """Aqui irá sua implementação"""
+        if value in self._list:
+            return False
         self._list.append(value)
+        return value
 
     def dequeue(self):
         """Aqui irá sua implementação"""
+        if len(self) == 0:
+            return False
         return self._list.pop(0)
 
     def search(self, index):
