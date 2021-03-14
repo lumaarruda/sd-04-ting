@@ -18,7 +18,10 @@ def remove(instance):
     """Aqui irá sua implementação"""
     file_removed = instance.dequeue()
     if file_removed:
-        print(f"Arquivo {file_removed} removido com sucesso", file=sys.stdout)
+        print(
+            f"Arquivo {file_removed['nome_do_arquivo']} removido com sucesso",
+            file=sys.stdout,
+        )
     else:
         print("Não há elementos", file=sys.stdout)
 
