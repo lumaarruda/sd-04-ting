@@ -16,7 +16,7 @@ def exists_word(word, instance):
         "arquivo": "",
         "ocorrencias": []
     }]
-    
+
     # data_exists_word = list()
     for index in range(len(instance)):
         folder = instance.search(index)
