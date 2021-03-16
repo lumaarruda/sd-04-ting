@@ -3,4 +3,6 @@ def exists_word(word, instance):
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    # Executar a função exists_word com palavra inexistente
+    # deverá retornar uma lista vazia.
+    return []
