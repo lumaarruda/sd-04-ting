@@ -1,3 +1,12 @@
+def ocurrences_is_empty(data):
+    # Checa se a palavra não foi encontrada em nenhum arquivo
+    for ocurrence in data:
+        if len(ocurrence["ocorrencias"]) > 0:
+            return data
+
+    return []
+
+
 def exists_word(word, instance):
     data = list()
 
@@ -17,12 +26,7 @@ def exists_word(word, instance):
         # Terminou a busca dentro de UM arquivo
         data.append(obj_structure)
 
-    # Checando se a palavra não foi encontrada em nenhum arquivo
-    for ocurrence in data:
-        if len(ocurrence["ocorrencias"]) > 0:
-            return data
-
-    return []
+    return ocurrences_is_empty(data)
 
 
 def search_by_word(word, instance):
@@ -39,30 +43,11 @@ def search_by_word(word, instance):
         # Ocorrências
         for index, line in enumerate(folder["linhas_do_arquivo"]):
             if word.lower() in line.lower():
-                obj_structure["ocorrencias"].append({
-                    "linha": index + 1,
-                    "conteudo": line
-                })
+                obj_structure["ocorrencias"].append(
+                    {"linha": index + 1, "conteudo": line}
+                )
 
         # Terminou a busca dentro de UM arquivo
         data.append(obj_structure)
 
-    for ocurrence in data:
-        if len(ocurrence["ocorrencias"]) > 0:
-            return data
-
-    return []
-
-# --- Teste ---
-# from ting_file_management.file_process import process
-# from ting_file_management.queue import Queue
-
-# print("\n--- Process ---")
-# project = Queue()
-# # process("statics/nome_pedro.txt", project)
-
-# # print("\n\n--- Exists_Word ---")
-# # word = exists_word("Pedro", project)
-
-# print("\n\n--- Search_By_Word ---")
-# word = search_by_word("pedro", project)
+    return ocurrences_is_empty(data)
