@@ -1,79 +1,63 @@
 def exists_word(word, instance):
-    # data = [{
-    #     "palavra": "",
-    #     "arquivo": "",
-    #     "ocorrencias": [
-    #         {
-    #             "linha": 1
-    #         },
-    #         {
-    #             "linha": 2
-    #         }
-    #     ]
-    # }]
-    data = [{"palavra": word, "arquivo": "", "ocorrencias": []}]
+    data = list()
 
-    # data_exists_word = list()
-    for index in range(len(instance)):
-        folder = instance.search(index)
+    for index_instance in range(len(instance)):
+        obj_structure = {"palavra": word, "arquivo": "", "ocorrencias": []}
+
+        folder = instance.search(index_instance)
         # print("\nFOLDER:", folder)
 
         # Arquivo
-        data[0]["arquivo"] = folder["nome_do_arquivo"]
-
-        # Ocorrências
-        for index, line in enumerate(folder["linhas_do_arquivo"]):
-            # print("\nINDEX:", index)
-            # print("LINE:", line)
-            if word in line:
-                data[0]["ocorrencias"].append({"linha": index + 1})
-
-    # print("\n DATA:", data)
-    if len(data[0]["ocorrencias"]) < 1:
-        return []
-    else:
-        return data
-
-
-def search_by_word(word, instance):
-    # data = [
-    #     {
-    #         "palavra": "",
-    #         "arquivo": "",
-    #         "ocorrencias": [
-    #             {"linha": 1, "conteudo": "Acima de tudo,"},
-    #             {
-    #                 "linha": 2,
-    #                 "conteudo": "",
-    #             },
-    #         ],
-    #     }
-    # ]
-    data = [{"palavra": word, "arquivo": "", "ocorrencias": []}]
-
-    for index in range(len(instance)):
-        folder = instance.search(index)
-        print("\nFOLDER:", folder)
-
-        # Arquivo
-        data[0]["arquivo"] = folder["nome_do_arquivo"]
+        obj_structure["arquivo"] = folder["nome_do_arquivo"]
 
         # Ocorrências
         for index, line in enumerate(folder["linhas_do_arquivo"]):
             # print("\nINDEX:", index)
             # print("LINE:", line)
             if word.lower() in line.lower():
-                data[0]["ocorrencias"].append({
+                obj_structure["ocorrencias"].append({"linha": index + 1})
+
+        # Terminou a busca dentro de UM arquivo
+        data.append(obj_structure)
+
+    # Checando se a palavra não foi encontrada em nenhum arquivo
+    for ocurrence in data:
+        if len(ocurrence["ocorrencias"]) > 0:
+            return data
+
+    return []
+
+
+def search_by_word(word, instance):
+    data = list()
+
+    for index_instance in range(len(instance)):
+        obj_structure = {"palavra": word, "arquivo": "", "ocorrencias": []}
+        folder = instance.search(index_instance)
+        print("\nFOLDER:", folder)
+
+        # Arquivo
+        obj_structure["arquivo"] = folder["nome_do_arquivo"]
+
+        # Ocorrências
+        for index, line in enumerate(folder["linhas_do_arquivo"]):
+            # print("\nINDEX:", index)
+            # print("LINE:", line)
+            if word.lower() in line.lower():
+                obj_structure["ocorrencias"].append({
                     "linha": index + 1,
                     "conteudo": line
                 })
 
-    # print("\n DATA:", data)
-    if len(data[0]["ocorrencias"]) < 1:
-        return []
-    else:
-        return data
+        # Terminou a busca dentro de UM arquivo
+        data.append(obj_structure)
 
+    # print("\n DATA:", data)
+    for ocurrence in data:
+        if len(ocurrence["ocorrencias"]) > 0:
+            return data
+
+    return []
 
 # --- Teste ---
 # from ting_file_management.file_process import process
