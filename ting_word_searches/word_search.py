@@ -23,4 +23,21 @@ def exists_word(word, instance):
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    queue = instance._queue
+    match = []
+    occurrences = []
+    count = 0
+
+    for file in queue:
+        for i in file["linhas_do_arquivo"]:
+            if re.findall(word, i, re.IGNORECASE):
+                count += 1
+                occurrences.append({"linha": count, "conteudo": i})
+
+        if len(occurrences):
+            match.append({
+                "palavra": word,
+                "arquivo": file["nome_do_arquivo"],
+                "ocorrencias": occurrences})
+
+    return match
