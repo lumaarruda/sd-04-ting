@@ -27,3 +27,6 @@ class Queue:
         if index < 0:
             raise IndexError
         return self._data[index]
+
+    def __iter__(self):
+        return iter(self._data)
