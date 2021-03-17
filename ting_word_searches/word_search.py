@@ -1,9 +1,15 @@
 def exists_word(word, instance):
     print(instance)
-    for x in instance:
-
-        if word in x["linhas_do_arquivo"]:
-            return x
+    for i, line in enumerate(instance):
+        if word in line["linhas_do_arquivo"][0]:
+            ret_dict = [
+                {
+                    "palavra": f"{word}",
+                    "arquivo": f"{line['nome_do_arquivo']}",
+                    "ocorrencias": [{"linha": i + 1}],
+                }
+            ]
+            return ret_dict
         else:
             return []
 
