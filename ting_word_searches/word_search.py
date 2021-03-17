@@ -6,18 +6,18 @@ def exists_word(word, instance):
     count = 0
 
     for i in range(len(instance)):
-        seach_intance = instance.search(i)
-        list_of_ocorrence = []
+        search = instance.search(i)
+        ocorrence = []
         count += 1
-        for line in seach_intance["linhas_do_arquivo"]:
-            if re.search(word, line, re.IGNORECASE):
-                list_of_ocorrence.append({
+        for i in search["linhas_do_arquivo"]:
+            if re.search(word, i, re.IGNORECASE):
+                ocorrence.append({
                     "linha": count,
                 })
                 list.append({
                     "palavra": f"{word}",
-                    "arquivo": seach_intance["nome_do_arquivo"],
-                    "ocorrencias": list_of_ocorrence,
+                    "arquivo": search["nome_do_arquivo"],
+                    "ocorrencias": ocorrence,
                 })
 
     return list
