@@ -1,5 +1,5 @@
 class Queue:
-    FIRST_ELEMENT = 0   
+    FIRST_ELEMENT = 0
 
     def __init__(self):
         self._data = []
