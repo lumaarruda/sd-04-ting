@@ -16,4 +16,6 @@ class Queue:
         return None
 
     def search(self, index):
+        if not self._data[index]:
+            return IndexError
         return self._data[index]
