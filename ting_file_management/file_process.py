@@ -39,3 +39,4 @@ def file_metadata(instance, position):
         sys.stderr.write("Posição inválida")
     else:
         sys.stdout.write(f"{file_data}")
+        
