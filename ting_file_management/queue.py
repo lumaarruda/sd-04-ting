@@ -1,5 +1,5 @@
 # import queue
-# from queue import Queue
+import sys
 
 
 class Queue:
@@ -13,7 +13,11 @@ class Queue:
         self.fila.append(value)
 
     def dequeue(self):
-        return self.fila.pop(0)
+        if len(self.fila) == 0:
+            return print("Não há elementos", file=sys.stdout)
+        if self.fila:
+            return self.fila.pop(0)
+        return None
 
     def search(self, index):
         if index not in range(len(self.fila)):

@@ -24,4 +24,4 @@ def txt_importer(path_file):
 
 
 # caminho = 'statics/arquivo_teste.txt'
-# print(txt_importer(caminho))
+# print(len(txt_importer(caminho)))
