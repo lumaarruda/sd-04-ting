@@ -17,7 +17,7 @@ def txt_importer(path_file):
         return print(f"Arquivo {path_file} não encontrado", file=sys.stderr)
 
 # with open(path_file) as file:
-#             texto = []
+#             texto = [a]
 #             for linha in file:
 #                 texto.append(linha)
 #             return texto
