@@ -10,7 +10,9 @@ def search_in_lines(word, lines, show_content=False):
     lines_that_occurs = list()
     for index, line in enumerate(lines):
         if word.lower() in line.lower():
-            lines_that_occurs.append(generate_occur(index, line, show_content))
+            lines_that_occurs.append(
+                generate_occur(index, line, show_content)
+            )
     return lines_that_occurs
 
 
@@ -19,7 +21,9 @@ def search_lines_by_word(word, instance, show_content=False):
         return []
     result_list = list()
     for file in instance.queue:
-        occurrences = search_in_lines(word, file["linhas_do_arquivo"], show_content)
+        occurrences = search_in_lines(
+            word, file["linhas_do_arquivo"], show_content
+        )
         if occurrences:
             result_list.append({
                 "palavra": word,
