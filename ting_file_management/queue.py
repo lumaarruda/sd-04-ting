@@ -14,8 +14,7 @@ class Queue:
     def dequeue(self):
         if not self.queue:
             return None
-        else:
-            return self.queue.pop(0)
+        return self.queue.pop(0)
 
     def search(self, index):
         if index < 0:
