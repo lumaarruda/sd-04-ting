@@ -4,7 +4,7 @@ import sys
 
 class Queue:
     def __init__(self):
-        self.fila = []
+        self.fila = list()
 
     def __len__(self):
         return len(self.fila)
@@ -13,13 +13,19 @@ class Queue:
         self.fila.append(value)
 
     def dequeue(self):
+        # try:
+        #     self.fila.pop(0)
+        #     return print("Arquivo statics/arquivo_teste.txt removido com sucesso",
+        #                  file=sys.stdout)
+        # except IndexError:
+        #     return print("Não há elementos", file=sys.stdout)
         if len(self.fila) == 0:
-            return print("Não há elementos", file=sys.stdout)
+            return None
+            # return print("Não há elementos", file=sys.stdout)
         if self.fila:
             return self.fila.pop(0)
-        return None
 
     def search(self, index):
         if index not in range(len(self.fila)):
-            raise IndexError('index não encontrado')
+            raise IndexError('Posição inválida')
         return self.fila[index]

@@ -1,10 +1,8 @@
 from ting_file_management.file_management import txt_importer
-# from ting_file_management.queue import Queue
 import sys
 
 
 lidos = set()
-# fila = Queue()
 
 
 def process(path_file, instance):
@@ -27,19 +25,18 @@ def process(path_file, instance):
 
 
 def remove(instance):
-    removido = instance.dequeue()
-    if removido:
-        print("Arquivo statics/arquivo_teste.txt removido com sucesso",
-              file=sys.stdout)
+    if (instance.__len__() == 0):
+        return print('Não há elementos', file=sys.stdout)
+    instance.dequeue()
+    return print("Arquivo statics/arquivo_teste.txt removido com sucesso", file=sys.stdout)
+    # removido = instance.dequeue()
+    # if removido:
+    # print("Arquivo statics/arquivo_teste.txt removido com sucesso",
+    #       file=sys.stdout)
 
 
 def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
-
-
-# if len(instance) == 0:
-#         return print('Não há elementos', file=sys.stdout)
-#     else:
-#         instance.dequeue()
-#        return print("Arquivo statics/arquivo_teste.txt removido com sucesso",
-#                      file=sys.stdout)
+    try:
+        instance.search(position)
+    except IndexError:
+        print("Posição inválida", file=sys.stderr)
