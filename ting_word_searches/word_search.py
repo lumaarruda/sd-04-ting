@@ -17,6 +17,7 @@ def search_lines_by_word(word, instance, show_content=False):
 
     return result_list
 
+
 def exists_word(word, instance):
     return search_lines_by_word(word, instance)
 
