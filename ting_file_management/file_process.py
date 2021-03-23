@@ -1,5 +1,5 @@
+# from ting_file_management.queue import Queue
 from ting_file_management.file_management import txt_importer
-from ting_file_management.queue import Queue
 import sys
 
 
@@ -20,7 +20,7 @@ def remove(instance):
         sys.stdout.write(
             f"Arquivo {data['nome_do_arquivo']} removido com sucesso\n")
     else:
-        sys.stdout.write(f"Não há elementos\n")
+        sys.stdout.write("Não há elementos\n")
 
 
 def file_metadata(instance, position):
