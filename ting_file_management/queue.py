@@ -12,7 +12,9 @@ class Queue:
         if not self.queue:
             return None
         else:
-            self.queue.pop(0)
+            return self.queue.pop(0)
 
     def search(self, index):
-        return self.queue[index]:
+        if index < 0:
+            raise IndexError
+        return self.queue[index]
