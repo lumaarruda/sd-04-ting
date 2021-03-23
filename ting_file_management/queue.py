@@ -6,7 +6,10 @@ class Queue:
         return len(self.queue)
 
     def enqueue(self, value):
-        return self.queue.append(value)
+        if value in self.queue:
+            return None
+        self.queue.append(value)
+        return True
 
     def dequeue(self):
         if not self.queue:

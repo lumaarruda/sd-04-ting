@@ -10,7 +10,10 @@ def process(path_file, instance):
         "linhas_do_arquivo": text_file
     }
 
-    return print(f"{processed_file}", file=sys.stdout)
+    if (instance.enqueue(processed_file)):
+        return print(f"{processed_file}", file=sys.stdout)
+    else:
+        return None
 
 
 def remove(instance):
