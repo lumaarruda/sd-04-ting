@@ -1,9 +1,9 @@
-def generate_occur(index, line=None, show_content=False):
-    occur_dict = dict()
-    occur_dict["linha"] = index + 1
+def generate_occurrence(index, line=None, show_content=False):
+    occurrence_dict = dict()
+    occurrence_dict["linha"] = index + 1
     if line and show_content:
-        occur_dict["conteudo"] = line
-    return occur_dict
+        occurrence_dict["conteudo"] = line
+    return occurrence_dict
 
 
 def search_in_lines(word, lines, show_content=False):
@@ -11,7 +11,7 @@ def search_in_lines(word, lines, show_content=False):
     for index, line in enumerate(lines):
         if word.lower() in line.lower():
             lines_that_occurs.append(
-                generate_occur(index, line, show_content)
+                generate_occurrence(index, line, show_content)
             )
     return lines_that_occurs
 
