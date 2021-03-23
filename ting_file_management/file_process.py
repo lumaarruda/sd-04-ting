@@ -17,19 +17,22 @@ def process(path_file, instance):
 def remove(instance):
     data = instance.dequeue()
     if data:
-        sys.stdout.write(f"Arquivo {data['nome_do_arquivo']} removido com sucesso\n")
+        sys.stdout.write(
+            f"Arquivo {data['nome_do_arquivo']} removido com sucesso\n")
     else:
         sys.stdout.write(f"Não há elementos\n")
+
 
 def file_metadata(instance, position):
     try:
         data = instance.search(position)
         sys.stdout.write(f"{data}")
-    except:
-        IndexError(sys.stderr.write("Posição inválida"))
+    except IndexError:
+        sys.stderr.write("Posição inválida")
 
-project = Queue()
+
+# project = Queue()
 # process('statics/nome_pedro.txt', project)
 # process('statics/nome_pedro.txt', project)
 # process('statics/arquivo_teste.txt', project)
-remove(project)
+# remove(project)
