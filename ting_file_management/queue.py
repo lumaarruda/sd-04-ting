@@ -8,7 +8,8 @@ class Queue:
         return len(self._data)
 
     def enqueue(self, value):
-        self._data.append(value)
+        if value not in self._data:
+            self._data.append(value)
 
     def dequeue(self):
         if self._data:
