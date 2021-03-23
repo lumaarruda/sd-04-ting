@@ -1,5 +1,5 @@
 # import queue
-import sys
+# import sys
 
 
 class Queue:
@@ -15,7 +15,7 @@ class Queue:
     def dequeue(self):
         # try:
         #     self.fila.pop(0)
-        #     return print("Arquivo statics/arquivo_teste.txt removido com sucesso",
+        # return print("Arquivo statics/arquivo_teste.txt removido com sucesso"
         #                  file=sys.stdout)
         # except IndexError:
         #     return print("Não há elementos", file=sys.stdout)

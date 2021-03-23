@@ -28,7 +28,8 @@ def remove(instance):
     if (instance.__len__() == 0):
         return print('Não há elementos', file=sys.stdout)
     instance.dequeue()
-    return print("Arquivo statics/arquivo_teste.txt removido com sucesso", file=sys.stdout)
+    return print("Arquivo statics/arquivo_teste.txt removido com sucesso",
+                 file=sys.stdout)
     # removido = instance.dequeue()
     # if removido:
     # print("Arquivo statics/arquivo_teste.txt removido com sucesso",
