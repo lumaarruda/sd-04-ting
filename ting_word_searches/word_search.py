@@ -1,19 +1,31 @@
+def generate_occur(index, line=None, show_content=False):
+    occur_dict = dict()
+    occur_dict["linha"] = index + 1
+    if line and show_content:
+        occur_dict["conteudo"] = line
+    return occur_dict
+
+
+def search_in_lines(word, lines, show_content=False):
+    lines_that_occurs = list()
+    for index, line in enumerate(lines):
+        if word.lower() in line.lower():
+            lines_that_occurs.append(generate_occur(index, line, show_content))
+    return lines_that_occurs
+
+
 def search_lines_by_word(word, instance, show_content=False):
     if not len(instance.queue):
         return []
     result_list = list()
     for file in instance.queue:
-        lines_that_occurs = list()
-        for index, line in enumerate(file["linhas_do_arquivo"]):
-            if word in line:
-                lines_that_occurs.append({"linha": index + 1})
-        if len(lines_that_occurs):
-            result_file = {
+        occurrences = search_in_lines(word, file["linhas_do_arquivo"], show_content)
+        if occurrences:
+            result_list.append({
                 "palavra": word,
                 "arquivo": file["nome_do_arquivo"],
-                "ocorrencias": lines_that_occurs
-            }
-            result_list.append(result_file)
+                "ocorrencias": occurrences
+            })
 
     return result_list
 
@@ -23,4 +35,4 @@ def exists_word(word, instance):
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    return search_lines_by_word(word, instance, True)
