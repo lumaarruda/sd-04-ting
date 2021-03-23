@@ -14,7 +14,7 @@ def exists_word(word, instance):
                 "ocorrencias": lines_that_occurs
             }
             result_list.append(result_file)
-    
+
     return result_list
 
 
