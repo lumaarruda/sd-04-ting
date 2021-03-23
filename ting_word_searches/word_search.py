@@ -1,5 +1,5 @@
-from ting_file_management.file_process import process
-from ting_file_management.queue import Queue
+# from ting_file_management.file_process import process
+# from ting_file_management.queue import Queue
 
 
 def exists_word(word, instance):
@@ -43,9 +43,9 @@ def search_by_word(word, instance):
         print(f"\n{response}")
     return response
 
-project = Queue()
-process("statics/nome_pedro.txt", project)
-search_by_word("pedro", project)
+# project = Queue()
+# process("statics/nome_pedro.txt", project)
+# search_by_word("pedro", project)
 # process('statics/nome_pedro.txt', project)
 # process('statics/arquivo_teste.txt', project)
 # remove(project)
