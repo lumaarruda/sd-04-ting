@@ -3,24 +3,26 @@ from ting_file_management.file_management import txt_importer
 import sys
 
 
+# lidos = set()
+
+
 def process(path_file, instance):
-    lidos = set()
-    result = {
-        'nome_do_arquivo': '',
-        'qtd_linhas': '',
-        'linhas_do_arquivo': ''
-        }
+
+    for item in range(len(instance)):
+        # busca = instance.search(item)
+        if instance.search(item)['nome_do_arquivo'] == path_file:
+            return
+
     dados = txt_importer(path_file)
 
-    if path_file not in lidos:
-        result['nome_do_arquivo'] = path_file
-        result['qtd_linhas'] = len(dados)
-        result['linhas_do_arquivo'] = dados
-        lidos.add(path_file)
-        instance.enqueue(result)
-        return print(result, file=sys.stdout)
-    else:
-        return
+    result = {
+        'nome_do_arquivo': path_file,
+        'qtd_linhas': len(dados),
+        'linhas_do_arquivo': dados,
+    }
+
+    instance.enqueue(result)
+    return print(result, file=sys.stdout)
 
 
 def remove(instance):
@@ -44,7 +46,8 @@ def file_metadata(instance, position):
 
 # projeto = Queue()
 # caminho = "statics/arquivo_teste.txt"
+# process(caminho, projeto)
 
-
+# print(f"serch, {projeto.search(0)}")
 # print(f"primeiro {process(caminho, projeto)}")
 # print(f"segundo {process(caminho, projeto)}")
