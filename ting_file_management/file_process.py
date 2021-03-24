@@ -1,5 +1,4 @@
 import sys
-from ting_file_management.queue import Queue
 from ting_file_management.file_management import txt_importer
 
 
@@ -38,4 +37,3 @@ def file_metadata(instance, position):
         sys.stderr.write("Posição inválida")
     else:
         print(find_data)
-
