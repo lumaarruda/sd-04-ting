@@ -1,19 +1,25 @@
-def search_on_line(word, file_info, add_content):
+def exists_word(word, instance):
     result = []
-    for index in range(len(file_info["linhas_do_arquivo"])):
-        line = file_info["linhas_do_arquivo"][index]
-        if word.lower() in line.lower():
-            occurrences = {"linha": index + 1}
-            if add_content:
-                occurrences["conteudo"] = line
-            result.append(occurrences)
+    for i in range(len(instance)):
+        entry = instance.search(i)
+        occurrences = []
+        for index, line in enumerate(entry['linhas_do_arquivo']):
+            if word.lower() in line.lower():
+                occurrences.append({"linha": index + 1})
+        if occurrences == []:
+            return occurrences
+        result.append({
+            "arquivo": entry['nome_do_arquivo'],
+            "ocorrencias": occurrences,
+            "palavra": word
+        })
     return result
 
 
 def search_on_instance(word, instance, add_content=False):
     files_found = []
     for file_info in instance:
-        occurrences = search_on_line(word, file_info, add_content)
+        occurrences = exists_word(word, file_info, add_content)
 
         if occurrences:
             files_found.append(
@@ -25,10 +31,6 @@ def search_on_instance(word, instance, add_content=False):
             )
 
     return files_found
-
-
-def exists_word(word, instance):
-    return search_on_instance(word, instance)
 
 
 def search_by_word(word, instance):
