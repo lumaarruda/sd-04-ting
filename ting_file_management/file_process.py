@@ -3,7 +3,7 @@ import sys
 
 
 def stdout_file(file_info):
-   print(
+    print(
         f"""'nome_do_arquivo': '{file_info["nome_do_arquivo"]}',
         'qtd_linhas': {len(file_info["linhas_do_arquivo"])},
         'linhas_do_arquivo': {file_info["linhas_do_arquivo"]}""",
