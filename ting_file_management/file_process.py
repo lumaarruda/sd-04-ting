@@ -28,7 +28,7 @@ def remove(instance):
 
 def file_metadata(instance, position):
     if position > len(instance):
-        return print("Posição inválida", file=sys.stdout)
+        return print("Posição inválida", file=sys.stderr)
 
     metadata = instance.search(position)
 
