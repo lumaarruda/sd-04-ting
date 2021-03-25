@@ -31,6 +31,5 @@ def exists_word(word, instance):
     return search_on_instance(word, instance)
 
 
-
 def search_by_word(word, instance):
     return search_on_instance(word, instance, True)
