@@ -1,11 +1,11 @@
 def search_ocurrences(word, file_search, add_content):
     list_ocurrences = list()
-    for linha in range(len(file_search["linhas_do_arquivo"])):
-
-        if word.lower() in file_search["linhas_do_arquivo"][linha].lower():
+    content = file_search["linhas_do_arquivo"]
+    for linha in range(len(content)):
+        if word.lower() in content[linha].lower():
             if add_content:
                 list_ocurrences.append({"linha": linha + 1,
-                                        "conteudo": file_search["linhas_do_arquivo"][linha]})
+                                        "conteudo": content[linha]})
             else:
                 list_ocurrences.append({"linha": linha + 1})
 
