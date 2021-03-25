@@ -1,5 +1,3 @@
-
-
 def search_ocurrences(word, file_search, add_content):
     list_ocurrences = list()
     for linha in range(len(file_search["linhas_do_arquivo"])):
