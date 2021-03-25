@@ -17,6 +17,7 @@ def process(path_file, instance):
     print(result_file)
     instance.enqueue(result_file)
 
+
 def remove(instance):
     """Aqui irá sua implementação"""
 
