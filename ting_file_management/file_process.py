@@ -21,7 +21,7 @@ def process(path_file, instance):
 
 
 def remove(instance):
-    if instance.__len__() == 0:
+    if len(instance) == 0:
         return print("Não há elementos", file=sys.stdout)
 
     instance.dequeue()
@@ -32,4 +32,7 @@ def remove(instance):
 
 
 def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
+    try:
+        print(instance.search(position))
+    except IndexError:
+        return print('Posição inválida', file=sys.stderr)
