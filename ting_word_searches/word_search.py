@@ -22,7 +22,8 @@ def search_by_word(word, instance):
         file = instance.search(item)
         data["arquivo"] = file["nome_do_arquivo"]
         for index, line in enumerate(file["linhas_do_arquivo"]):
-            if word in line:
+            # maldito case insensitive
+            if word.upper() in line.upper():
                 data["ocorrencias"].append(
                     {"linha": (index + 1), "conteudo": line}
                 )
