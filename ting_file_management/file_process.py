@@ -27,7 +27,9 @@ def remove(instance):
     removed = instance.dequeue()
 
     if removed:
-        sys.stdout.write(f"Arquivo {removed['nome_do_arquivo']} removido com sucesso\n")
+        sys.stdout.write(
+            f"Arquivo {removed['nome_do_arquivo']} removido com sucesso\n"
+        )
 
 
 def file_metadata(instance, position):
