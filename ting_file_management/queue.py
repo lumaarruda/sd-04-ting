@@ -15,9 +15,7 @@ class Queue:
     def dequeue(self):
         try:
             removed = self.file_queue.popleft()
-            sys.stdout.write(
-                f"Arquivo {removed['nome_do_arquivo']} removido com sucesso\n"
-            )
+            return removed
         except IndexError:
             sys.stdout.write('Não há elementos\n')
 
