@@ -1,3 +1,4 @@
+import sys
 from collections import deque
 
 
@@ -12,10 +13,16 @@ class Queue:
         self.file_queue.append(value)
 
     def dequeue(self):
-        return self.file_queue.popleft()
+        try:
+            removed = self.file_queue.popleft()
+            sys.stdout.write(
+                f"Arquivo {removed['nome_do_arquivo']} removido com sucesso\n"
+            )
+        except IndexError:
+            sys.stdout.write('Não há elementos\n')
 
     def search(self, index):
-        if index < 0:
+        if index < 0 or index > len(self.file_queue) - 1:
             raise IndexError
 
         return self.file_queue[index]
