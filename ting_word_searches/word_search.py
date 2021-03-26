@@ -18,7 +18,7 @@ def search(type, word, instance):
             if word.lower() in line.lower()
         ]
 
-        if len(search_result) > 0:
+        if search_result:
             result.append({
                 "palavra": word,
                 "arquivo": file['nome_do_arquivo'],
