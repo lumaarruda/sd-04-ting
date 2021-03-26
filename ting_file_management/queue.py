@@ -10,8 +10,10 @@ class Queue:
 
     def dequeue(self):
         if self.queue:
-            return self.queue.pop()
+            return self.queue.pop(0)
         return None
 
     def search(self, index):
+        if index < 0:
+            raise IndexError
         return self.queue[index]
