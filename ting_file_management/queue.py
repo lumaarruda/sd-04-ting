@@ -22,3 +22,6 @@ class Queue:
         if 0 <= index < len(self):
             return self._queue[index]
         raise IndexError(f"o index {index} não existe")
+
+    def __iter__(self):
+        return iter(self._queue)
