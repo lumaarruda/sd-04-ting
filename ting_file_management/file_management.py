@@ -1,9 +1,10 @@
 import os
 import sys
 
+
 def txt_importer(path_file):
     _, file_extension = os.path.splitext(path_file)
-    
+
     if file_extension not in ".txt":
         return sys.stderr.write("Formato inválido\n")
 
