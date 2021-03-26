@@ -1,5 +1,23 @@
+from ting_file_management.file_management import txt_importer
+import sys
+
+
+# Receber o caminho e a instancia do Queue
 def process(path_file, instance):
-    """Aqui irá sua implementação"""
+    data = txt_importer(path_file)
+
+    for item in range(len(instance)):
+        if instance.search(item)["nome_do_arquivo"] == path_file:
+            return
+
+    new_data = {
+        "nome_do_arquivo": path_file,
+        "qtd_linhas": len(data),
+        "linhas_do_arquivo": data,
+    }
+
+    instance.enqueue(new_data)
+    return print(new_data, file=sys.stdout)
 
 
 def remove(instance):
