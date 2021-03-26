@@ -7,13 +7,11 @@ def txt_importer(path_file):
             # return sys.stderr.write("Formato inválido\n")
             print("Formato inválido", file=sys.stderr)
 
-        file = open(path_file, "r")
-        file_read = []
+        with open(path_file, "r") as file:
+            file_read = []
 
-        for line in file.readlines():
-            file_read.append(line.rstrip("\n"))
-
-        # file.close()
+            for line in file.readlines():
+                file_read.append(line.rstrip("\n"))
 
     except FileNotFoundError:
         print(f"Arquivo {path_file} não encontrado", file=sys.stderr)
