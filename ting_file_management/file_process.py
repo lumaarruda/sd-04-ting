@@ -1,3 +1,4 @@
+import sys
 from ting_file_management.file_management import txt_importer
 
 
@@ -9,7 +10,10 @@ def process(path_file, instance):
        "qtd_linhas": len(file_data),
        "linhas_do_arquivo": file_data
     }
-    print(file_info)
+    if instance.enqueue(file_info):
+        return print(file_info, file=sys.stdout)
+
+    return None
 
 
 def remove(instance):

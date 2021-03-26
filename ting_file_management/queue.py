@@ -6,11 +6,17 @@ class Queue:
         return len(self._queue)
 
     def enqueue(self, value):
+        if value in self._queue:
+            return None
+
         self._queue.append(value)
+        return True
 
     def dequeue(self):
-        if self._queue:
-            return self._queue.pop(0)
+        if not self._queue:
+            return None
+
+        return self._queue.pop(0)
 
     def search(self, index):
         if 0 <= index < len(self):
