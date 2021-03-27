@@ -17,3 +17,18 @@ def process(path_file, instance):
 
     instance.enqueue(result)
     return print(result, file=sys.stdout)
+
+
+def remove(instance):
+    if (instance.__len__() == 0):
+        return print('Não há elementos', file=sys.stdout)
+    instance.dequeue()
+    return print("Arquivo statics/arquivo_teste.txt removido com sucesso",
+                 file=sys.stdout)
+
+
+def file_metadata(instance, position):
+    try:
+        instance.search(position)
+    except IndexError:
+        print("Posição inválida", file=sys.stderr)
