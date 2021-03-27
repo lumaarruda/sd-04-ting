@@ -1,6 +1,7 @@
 from ting_file_management.file_management import txt_importer
 import sys
 
+
 def format(path_file, lines_file):
     return {
         "nome_do_arquivo": path_file,
