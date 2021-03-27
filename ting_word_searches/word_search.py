@@ -26,6 +26,7 @@ def search_words_on_line(word, file_info, add_content):
             result.append(occurrences)
     return result
 
+
 def exists_word(word, instance):
     return search_words_on_instance(word, instance)
 
