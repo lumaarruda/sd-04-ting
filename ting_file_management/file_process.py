@@ -3,16 +3,20 @@ from .file_management import txt_importer
 
 
 def process(path_file, instance):
-    text_file = txt_importer(path_file)
-    processed_file = {
+    for item in range(len(instance)):
+        if path_file == instance.search(item)["nome_do_arquivo"]:
+            return
+
+    txt_imported = txt_importer(path_file)
+
+    data = {
         "nome_do_arquivo": path_file,
-        "qtd_linhas": len(text_file),
-        "linhas_do_arquivo": text_file,
+        "qtd_linhas": len(txt_imported),
+        "linhas_do_arquivo": txt_imported,
     }
 
-    if instance.enqueue(processed_file):
-        return print(f"{processed_file}", file=sys.stdout)
-    return None
+    sys.stdout.write(f"{data}")
+    instance.enqueue(data)
 
 
 def remove(instance):
