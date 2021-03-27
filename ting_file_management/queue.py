@@ -13,5 +13,8 @@ class Queue:
             return None
         if self.fila:
             return self.fila.pop(0)
+            
     def search(self, index):
-        """Aqui irá sua implementação"""
+        if index not in range(len(self.fila)):
+            raise IndexError('Posição inválida')
+        return self.fila[index]
