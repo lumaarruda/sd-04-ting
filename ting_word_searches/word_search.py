@@ -1,25 +1,35 @@
+def search_words_on_line(word, file_info, add_content):
+    result = []
+    for index in range(len(file_info["linhas_do_arquivo"])):
+        line = file_info["linhas_do_arquivo"][index]
+        if word.lower() in line.lower():
+            occurrences = {"linha": index + 1}
+            if add_content:
+                occurrences["conteudo"] = line
+            result.append(occurrences)
+    return result
+
+
+def search_words_on_instance(word, instance, add_content=False):
+    files_found = []
+    for file_info in instance:
+        occurrences = search_words_on_line(word, file_info, add_content)
+
+        if occurrences:
+            files_found.append(
+                {
+                    "palavra": word,
+                    "arquivo": file_info["nome_do_arquivo"],
+                    "ocorrencias": occurrences,
+                }
+            )
+
+    return files_found
+
+
 def exists_word(word, instance):
-    result_list = list()
-    word_ocur = list()
-    line_index = 0
-
-    for item in range(instance.__len__()):
-        data = instance.search(item)
-
-        for line in data["linhas_do_arquivo"]:
-            line_index += 1
-            contain_word = word in line
-            if contain_word:
-                word_ocur.append({"linha": line_index})
-                result_list.append(
-                    {
-                        "palavra": f"{word}",
-                        "arquivo": data["nome_do_arquivo"],
-                        "ocorrencias": word_ocur,
-                    }
-                )
-    return result_list
+    return search_words_on_instance(word, instance)
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    return search_words_on_instance(word, instance, True)
