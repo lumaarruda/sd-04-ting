@@ -1,6 +1,13 @@
 from ting_file_management.file_management import txt_importer
 import sys
 
+def format(path_file, lines_file):
+    return {
+        "nome_do_arquivo": path_file,
+        "qtd_linhas": len(lines_file),
+        "linhas_do_arquivo": lines_file,
+    }
+
 
 def process(path_file, instance):
     for index in range(len(instance)):
@@ -17,8 +24,12 @@ def remove(instance):
     if len(instance) > 0:
         file = instance.dequeue()
         return print(f"Arquivo {file['nome_do_arquivo']} removido com sucesso")
-    return print("Não há elementos")
+    else:
+        return print("Não há elementos")
 
 
 def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
+    try:
+        print(instance.search(position))
+    except IndexError:
+        sys.stderr.write("Posição inválida")
