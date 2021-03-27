@@ -1,18 +1,24 @@
 def exists_word(word, instance):
     """Aqui irá sua implementação"""
-    for x, y in enumerate(instance):
-        if word in y["linhas_do_arquivo"][0]:
-            search_res = [
+    result = []
+    counter = 0
+    find = []
+
+    for item in range(len(instance)):
+        file = instance.search(item)
+        counter += 1
+        if word in file["linhas_do_arquivo"][0]:
+            find.append({"linha": counter})
+            result.append(
                 {
                     "palavra": f"{word}",
-                    "arquivo": f'{y["nome_do_arquivo"]}',
-                    "ocorrencias": [{"linha": x + 1}],
+                    "arquivo": f'{file["nome_do_arquivo"]}',
+                    "ocorrencias": find,
                 }
-            ]
-        return search_res
-    else:
-        return []
+            )
+        return result
 
 
 def search_by_word(word, instance):
     """Aqui irá sua implementação"""
+    return []
