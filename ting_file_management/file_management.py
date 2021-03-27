@@ -7,7 +7,6 @@ def txt_importer(path_file):
         if not path_file.endswith('.txt'):
             return print('Formato inválido', file=sys.stderr)
 
-
         with open(path_file) as file:
             data = file.readlines()
             list_data = []
