@@ -3,34 +3,28 @@ from .file_management import txt_importer
 
 
 def process(path_file, instance):
-    for item in range(len(instance)):
-        if path_file == instance.search(item)["nome_do_arquivo"]:
-            return
-
-    txt_imported = txt_importer(path_file)
-
-    data = {
+    file = txt_importer(path_file)
+    new_file = {
         "nome_do_arquivo": path_file,
-        "qtd_linhas": len(txt_imported),
-        "linhas_do_arquivo": txt_imported,
+        "qtd_linhas": len(file),
+        "linhas_do_arquivo": file,
     }
 
-    sys.stdout.write(f"{data}")
-    instance.enqueue(data)
+    if instance.enqueue(new_file):
+        return print(f"{new_file}", file=sys.stdout)
+    return None
 
 
 def remove(instance):
-    if len(instance) == 0:
-        sys.stdout.write("Não há elementos\n")
-    else:
-        path_file = instance.dequeue()["nome_do_arquivo"]
-        sys.stdout.write(f"Arquivo {path_file} removido com sucesso\n")
+    file = instance.dequeue()
+    if not file:
+        return print("Não há elementos")
+    print(f"Arquivo {file['nome_do_arquivo']} removido com sucesso")
 
 
 def file_metadata(instance, position):
     try:
-        data = instance.search(position)
+        file = instance.search(position)
+        return print(file)
     except IndexError:
-        sys.stderr.write("Posição inválida")
-    else:
-        sys.stdout.write(f"{data}")
+        return print("Posição inválida", file=sys.stderr)
