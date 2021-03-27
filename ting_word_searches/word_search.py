@@ -7,6 +7,7 @@ def exists_word(word, instance):
     for item in range(len(instance)):
         file = instance.search(item)
         counter += 1
+        # Procura a palavra nas linhas
         if word in file["linhas_do_arquivo"][0]:
             find.append({"linha": counter})
             result.append(
