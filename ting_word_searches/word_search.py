@@ -3,13 +3,14 @@ def exists_word(word, instance):
     result = []
     for index in range(len(instance)):
         file_checked = instance.search(index)
-        if word in file_checked:
+        file_line = file_checked["linhas_do_arquivo"]
+        if word in file_line[0]:
             line_list.append({"linha": index + 1})
             result.append({
-                "palavra": word,
+                "palavra": f"{word}",
                 "arquivo": file_checked["nome_do_arquivo"],
                 "ocorrencias": line_list
-            }.rstrip("\n"))
+            })
     return result
 
 
@@ -18,13 +19,15 @@ def search_by_word(word, instance):
     result = []
     for index in range(len(instance)):
         file_checked = instance.search(index)
-        if word in file_checked:
+        file_line = file_checked["linhas_do_arquivo"]
+        if word in file_line[0]:
             line_list.append({
                 "linha": index + 1,
-                "conteudo": file_checked["linhas_do_arquivo"]})
+                "conteudo": f"{file_line}"
+            })
             result.append({
-                "palavra": word,
+                "palavra": f"{word}",
                 "arquivo": file_checked["nome_do_arquivo"],
                 "ocorrencias": line_list
-            }.rstrip("\n"))
+            })
     return result
