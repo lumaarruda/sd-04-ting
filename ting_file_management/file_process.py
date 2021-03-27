@@ -1,3 +1,7 @@
+from ting_file_management.file_management import txt_importer
+import sys
+
+
 def process(path_file, instance):
     for index in range(len(instance)):
         if instance.search(index)["nome_do_arquivo"] == path_file:
@@ -10,7 +14,10 @@ def process(path_file, instance):
 
 
 def remove(instance):
-    """Aqui irá sua implementação"""
+    if len(instance) > 0:
+        file = instance.dequeue()
+        return print(f"Arquivo {file['nome_do_arquivo']} removido com sucesso")
+    return print("Não há elementos")
 
 
 def file_metadata(instance, position):
