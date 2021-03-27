@@ -4,21 +4,20 @@ import sys
 
 def process(path_file, instance):
     """Aqui irá sua implementação"""
-    for x in range(len(instance)):
-        if instance.search(x)["nome_do_arquivo"] == path_file:
-            # procura cada arquivo
+    for i in range(len(instance)):
+        if instance.search(i)["nome_do_arquivo"] == path_file:
             return
-
+            # procura cada arquivo
     data = txt_importer(path_file)
 
-    res = {
+    result = {
         "nome_do_arquivo": path_file,
         "qtd_linhas": len(data),
-        "linhas_dor_arquivo": data,
+        "linhas_do_arquivo": data,
     }
 
-    instance.enqueue(res)
-    return print(res, file=sys.stdout)
+    instance.enqueue(result)
+    return print(result, file=sys.stdout)
 
 
 def remove(instance):
@@ -37,4 +36,4 @@ def file_metadata(instance, position):
     try:
         instance.search(position)
     except IndexError:
-        print("Posição Inválida", file=sys.stderr)
+        print("Posição inválida", file=sys.stderr)
